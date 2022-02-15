@@ -6,15 +6,14 @@ const AddTodoForm = () => {
 	const [value, setValue] = useState('');
 	const dispatch = useDispatch();
 
-	const onSubmit = (event) => { 
+	const onSubmit = (event) => {
 		event.preventDefault();
 		dispatch(
 			addTodo({
 				title: value,
 
-		})
+			})
 		);
-		// console.log('user entered: ' + value);
 	};
 
 	return (
