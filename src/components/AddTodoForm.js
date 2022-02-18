@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTodo } from '../redux/todoSlice';
+import todoSlice, { addTodo } from '../redux/todoSlice';
 
 const AddTodoForm = () => {
 	const [value, setValue] = useState('');
@@ -8,12 +8,18 @@ const AddTodoForm = () => {
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		dispatch(
-			addTodo({
-				title: value,
+		if (value === "") {
+			alert("Please enter  todo");
+		}
+		else {
+			dispatch(
+				addTodo({
+					title: value,
 
-			})
-		);
+				})
+			);
+		}
+		setValue('')
 	};
 
 	return (

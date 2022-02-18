@@ -1,14 +1,19 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { toggleComplete, deleteTodo } from '../redux/todoSlice';
+import { toggleComplete, editTodo, deleteTodo  } from '../redux/todoSlice';
 
 const TodoItem = ({ id, title, completed }) => {
 	const dispatch = useDispatch();
 
 	const handleCompleteClick = () => {
 		dispatch(
-			toggleComplete({ id: id, completed: !completed}));
+			toggleComplete({ id: id, completed: !completed})
+			);
 	};
+
+	const handleEditClick = () => {
+		 dispatch(editTodo({id : id}));
+	}
 
 	const handleDeleteClick = () => {
 		dispatch(deleteTodo({id: id}));
@@ -25,7 +30,16 @@ const TodoItem = ({ id, title, completed }) => {
 					onChange={handleCompleteClick}></input>
 					{title}
 				</span>
+				<div class="widget-content-right">
+				<div class="badge badge-success ml-1">Completed</div>
+				</div>
+				<div className='justify-content-right'>
+				<button onClick={handleEditClick} className='btn btn-danger'>Edit</button>
+				</div>
+				<div className='justify-content-right'>
 				<button onClick={handleDeleteClick} className='btn btn-danger'>Delete</button>
+				</div>
+				{/* <span style={completed ? completed : null}></span> */}
 			</div>
 		</li>
 	);
