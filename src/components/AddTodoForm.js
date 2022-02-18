@@ -20,6 +20,9 @@ const AddTodoForm = () => {
 			);
 		}
 		setValue('')
+
+		
+	  
 	};
 
 	return (
